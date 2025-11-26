@@ -1,0 +1,12 @@
+week
+weight
+save
+Reset zoom
+Reset file
+instructions
+Back to graph
+Choose an exercise
+Log a week and a weight
+Push the save button
+You can zoom with the mouse wheel or Trackpad
+You can reset a workout completely

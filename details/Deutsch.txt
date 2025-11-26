@@ -1,0 +1,12 @@
+Woche
+Gewicht
+Speichern
+Zoom zurücksetzen
+Dateien zurücksetzen
+Anleitung
+Zurück zum Graphen
+Wähle eine Übung
+Trage Woche und Gewicht ein
+Drücke den Speichern Knopf
+Du kannst mit Mausrad oder Trackpad vergrößern / verkleinern
+Du kannst die Informationen zur Übung auch komplett zurücksetzen
