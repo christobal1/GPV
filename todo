@@ -1,38 +1,33 @@
 
-Hinzuzufügen:
+## Hinzuzufügen:
 
-Hohe Priorität:
+# Hohe Priorität:
 
 - Bei Bearbeiten wird alte Gewichtzahl in das Textfeld geladen.
+
+- PDF/PNG Export
+
+- Wochenanzeige
+
+- Fehler: Im Nachhinein bearbeitete Werte werden an das Ende der txt gespeichert
+
+
+# Mittlere Priorität:
 
 - Sprachen (Deutsch, Englisch Auswahl)
     Lbs oder Kg Auswahl
 
-- PDF/PNG Export
-
-- Kleine Zahl des Kgs an letzter Übung / Linien
-
-- Wochenanzeige
-
 - Grid für Linien Zuordnung (Kg / Woche)
 
 
+# Niedrige Priorität:
 
-Niedrige Priorität:
+- Punkte anklickbar, daran bearbeitbar
 
-- Anklickbare Werte der Punkte
+- Fehler: Bei Schließen von Fenster 2 ist Programm zwar offen, aber kann nicht wieder visuell dargestellt werden
 
-- Bei Schließen von Fenster 2 ist Programm zwar offen, aber kann nicht wieder visuell dargestellt werden
+- Fehler: Gespeichert: Woche -1, Gewicht -1.000000 (in Konsole)
 
 - Search Bar
 
 - Ausführbare App
-
-
-
-Zu ändern:
-
-- Gespeichert: Woche -1, Gewicht -1.000000 (in Konsole)
-
-- Wenn Punkt bearbeitet/hinzugefügt wird der nicht letzten Punkt in Liste darstellt,
-    wird Aussicht auf Zukunft von dort gemacht und nicht vom letzten Punkt
