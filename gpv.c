@@ -93,11 +93,11 @@ void calculateProgress(char* buffer, size_t size){
     double KgPercentChange = (punkte_gewicht[punkte_count-1] / punkte_gewicht[0]) * 100 - 100;
 
     if(KgDifference > 0){
-        snprintf(buffer, size, "+%.2f Kg in %d Wochen (+%.2f%%)", fabs(KgDifference), punkte_count, fabs(KgPercentChange));
+        snprintf(buffer, size, "+%.2f Kg in %d Wochen (+%.2f%%)", fabs(KgDifference), punkte_woche[punkte_count-1], fabs(KgPercentChange));
     } else if (KgDifference < 0){
-        snprintf(buffer, size, "-%.2f Kg in %d Wochen (-%.2f%%)", fabs(KgDifference), punkte_count, fabs(KgPercentChange));
+        snprintf(buffer, size, "-%.2f Kg in %d Wochen (-%.2f%%)", fabs(KgDifference), punkte_woche[punkte_count-1], fabs(KgPercentChange));
     } else {
-        snprintf(buffer, size, "Keine Änderung in %d Wochen", punkte_count);
+        snprintf(buffer, size, "Keine Änderung in %d Wochen", punkte_woche[punkte_count-1]);
     }
 }
 

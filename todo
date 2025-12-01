@@ -3,6 +3,8 @@ Hinzuzufügen:
 
 Hohe Priorität:
 
+- Bei Bearbeiten wird alte Gewichtzahl in das Textfeld geladen.
+
 - Sprachen (Deutsch, Englisch Auswahl)
     Lbs oder Kg Auswahl
 
@@ -17,6 +19,8 @@ Hohe Priorität:
 
 
 Niedrige Priorität:
+
+- Anklickbare Werte der Punkte
 
 - Bei Schließen von Fenster 2 ist Programm zwar offen, aber kann nicht wieder visuell dargestellt werden
 
