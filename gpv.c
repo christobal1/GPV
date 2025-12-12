@@ -24,21 +24,34 @@ const char* PLACEHOLDER_FILE = "saves/Auswahl";
 
 GtkWidget* window = NULL;
 GtkWidget* window2 = NULL;
+GtkWidget* window3 = NULL;
 
 // Zoom Variablen
 static double zoomFactor = 1.0;
 static double offsetX = 0.0;
 static double offsetY = 0.0;
 
-// Zu Fenster 2 wechseln
-void switchToWindow2(GtkWidget* widget, gpointer data){
+// Zu Fenster 2 wechseln (von Fenster 1)
+void switchToWindow2From1(GtkWidget* widget, gpointer data){
     if(window) gtk_widget_hide(window);
     if(window2) gtk_widget_show_all(window2);
 }
 
-// Zu Fenster 1 wechseln
-void switchToWindow1(GtkWidget* widget, gpointer data){
+// Zu Fenster 1 wechseln (von Fenster 2)
+void switchToWindow1From2(GtkWidget* widget, gpointer data){
     if(window2) gtk_widget_hide(window2);
+    if(window) gtk_widget_show_all(window);
+}
+
+// Zu Fenster 3 wechseln (von Fenster 1)
+void switchToWindow3From1(GtkWidget* widget, gpointer data){
+    if(window) gtk_widget_hide(window);
+    if(window3) gtk_widget_show_all(window3);
+}
+
+// Zu Fenster 1 wechseln (von Fenster 3)
+void switchToWindow1From3(GtkWidget* widget, gpointer data){
+    if(window3) gtk_widget_hide(window3);
     if(window) gtk_widget_show_all(window);
 }
 

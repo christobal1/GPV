@@ -22,14 +22,17 @@ int main(int argc, char *argv[]) {
     GtkWidget* button2;
     GtkWidget* button3;
     GtkWidget* buttonToWindow2;
+    GtkWidget* buttonToWindow3;
     GtkWidget* buttonLanguage;
 
-    GtkWidget* buttonToWindow1;
+    GtkWidget* buttonToWindow1From2;
     GtkWidget* image1;
     GtkWidget* image2;
     GtkWidget* image3;
     GtkWidget* image4;
     GtkWidget* image5;
+
+    GtkWidget* buttonToWindow1From3;
 
     // GTK initialisieren
     gtk_init(&argc, &argv);
@@ -53,6 +56,11 @@ int main(int argc, char *argv[]) {
     gtk_window_set_title(GTK_WINDOW(window2), programmName);
     gtk_window_set_default_size(GTK_WINDOW(window2), windowX, windowY);
 
+    // Fenster 3 erstellen
+    window3 = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    gtk_window_set_title(GTK_WINDOW(window3), programmName);
+    gtk_window_set_default_size(GTK_WINDOW(window3), windowX, windowY);
+    
     // Sprache laden
     loadLanguageStrings();
 
@@ -91,6 +99,7 @@ int main(int argc, char *argv[]) {
     button2 = gtk_button_new_with_label(resetZoom);
     button3 = gtk_button_new_with_label(resetFile);
     buttonToWindow2 = gtk_button_new_with_label(instruction);
+    buttonToWindow3 = gtk_button_new_with_label("x");
     buttonLanguage = gtk_button_new_with_label(checkLanguage());
 
     // Globale Zeiger setzen
@@ -150,6 +159,7 @@ int main(int argc, char *argv[]) {
 
 
     gtk_box_pack_start(GTK_BOX(vbox), buttonToWindow2, FALSE, FALSE, 5);
+    gtk_box_pack_start(GTK_BOX(vbox), buttonToWindow3, FALSE, FALSE, 5);
     gtk_box_pack_start(GTK_BOX(vbox), combo, FALSE, FALSE, 28);
     gtk_box_pack_start(GTK_BOX(vbox), label1, FALSE, FALSE, 5);
     gtk_box_pack_start(GTK_BOX(vbox), entry1, FALSE, FALSE, 5);
@@ -204,7 +214,7 @@ int main(int argc, char *argv[]) {
 
     //Fenster 2 Inhalt:
 
-    buttonToWindow1 = gtk_button_new_with_label(backToGraph);
+    buttonToWindow1From2 = gtk_button_new_with_label(backToGraph);
 
     // Scrolled Window für Fenster 2
     GtkWidget* scrolled2 = gtk_scrolled_window_new(NULL, NULL);
@@ -263,7 +273,7 @@ int main(int argc, char *argv[]) {
     gtk_box_pack_start(GTK_BOX(vbox2), hboxInfo3, TRUE, TRUE, 0);
     gtk_box_pack_start(GTK_BOX(vbox2), hboxInfo4, TRUE, TRUE, 0);
     gtk_box_pack_start(GTK_BOX(vbox2), hboxInfo5, TRUE, TRUE, 0);
-    gtk_box_pack_start(GTK_BOX(vbox2), buttonToWindow1, FALSE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(vbox2), buttonToWindow1From2, FALSE, FALSE, 0);
 
 
     gtk_container_add(GTK_CONTAINER(window2), scrolled2);
@@ -272,6 +282,21 @@ int main(int argc, char *argv[]) {
 
 
 
+
+
+    // Fenster 3 Inhalt
+
+    buttonToWindow1From3 = gtk_button_new_with_label(backToGraph);
+
+    GtkWidget* hboxWin3 = gtk_box_new(GTK_ORIENTATION_HORIZONTAL, 5);
+    gtk_box_pack_start(GTK_BOX(hboxWin3), buttonToWindow1From3, TRUE, TRUE, 0);
+    gtk_container_add(GTK_CONTAINER(window3), hboxWin3);
+
+
+
+
+
+    
 
 
 
@@ -292,9 +317,13 @@ int main(int argc, char *argv[]) {
 
     g_signal_connect(button3, "clicked", G_CALLBACK(on_button3_clicked), NULL);
 
-    g_signal_connect(buttonToWindow2, "clicked", G_CALLBACK(switchToWindow2), NULL);
+    g_signal_connect(buttonToWindow2, "clicked", G_CALLBACK(switchToWindow2From1), NULL);
 
-    g_signal_connect(buttonToWindow1, "clicked", G_CALLBACK(switchToWindow1), NULL);
+    g_signal_connect(buttonToWindow3, "clicked", G_CALLBACK(switchToWindow3From1), NULL);
+
+    g_signal_connect(buttonToWindow1From2, "clicked", G_CALLBACK(switchToWindow1From2), NULL);
+
+    g_signal_connect(buttonToWindow1From3, "clicked", G_CALLBACK(switchToWindow1From3), NULL);
 
 
     g_signal_connect(buttonLanguage, "clicked", G_CALLBACK(toggleLanguage), NULL);

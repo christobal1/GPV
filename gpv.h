@@ -16,6 +16,7 @@ extern double gewicht;
 // Globale Fenster
 extern GtkWidget* window;
 extern GtkWidget* window2;
+extern GtkWidget* window3;
 
 // Globale Widgets
 extern GtkWidget* g_drawing_area;
@@ -26,8 +27,10 @@ extern GtkWidget* g_progressPerWeek;
 extern GtkWidget* g_button_save;
 
 // Funktionen
-void switchToWindow2(GtkWidget* widget, gpointer data);
-void switchToWindow1(GtkWidget* widget, gpointer data);
+void switchToWindow2From1(GtkWidget* widget, gpointer data);
+void switchToWindow1From2(GtkWidget* widget, gpointer data);
+void switchToWindow3From1(GtkWidget* widget, gpointer data);
+void switchToWindow1From3(GtkWidget* widget, gpointer data);
 GtkWidget* load_scaled_image(const char* filename, int width, int height);
 void save_data_to_file();
 void load_data_from_file();
