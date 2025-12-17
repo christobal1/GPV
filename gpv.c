@@ -226,7 +226,7 @@ void on_button_clicked(GtkWidget* widget, gpointer data) {
             punkte_woche[punkte_count] = neue_woche;
             punkte_gewicht[punkte_count] = neues_gewicht;
             punkte_count++;
-            g_print("Gespeichert: Woche %d, Gewicht %f\n", woche, gewicht);
+            g_print("Gespeichert: Woche %d, Gewicht %f\n", neue_woche, neues_gewicht);
         }
     }
     
