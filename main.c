@@ -270,7 +270,6 @@ int main(int argc, char *argv[]) {
     gtk_box_pack_start(GTK_BOX(vbox2), hboxInfo1, TRUE, TRUE, 0);
     gtk_box_pack_start(GTK_BOX(vbox2), hboxInfo2, TRUE, TRUE, 0);
     gtk_box_pack_start(GTK_BOX(vbox2), hboxInfo3, TRUE, TRUE, 0);
-    gtk_box_pack_start(GTK_BOX(vbox2), hboxInfo3, TRUE, TRUE, 0);
     gtk_box_pack_start(GTK_BOX(vbox2), hboxInfo4, TRUE, TRUE, 0);
     gtk_box_pack_start(GTK_BOX(vbox2), hboxInfo5, TRUE, TRUE, 0);
     gtk_box_pack_start(GTK_BOX(vbox2), buttonToWindow1From2, FALSE, FALSE, 0);
