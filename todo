@@ -12,6 +12,7 @@
 - Neues Fenster mit Wertzusammenfassung %, erste eingetragene, letzte eingetragene (+ Sortieren nach größten Kg oder größter Änderung, oder nach Workoutgruppen)
 
 - Fehler: Im Nachhinein bearbeitete Werte werden an das Ende der txt gespeichert
+-> Idee für Beheben: Speichere alle Wochen auch leere, fülle sie mit 0 Werten, dann müssen nie neue angelegt werden. 1-50: 0, dann ändere die Werte (und displaye nicht die 0 Werte)
 
 
 # Mittlere Priorität:
