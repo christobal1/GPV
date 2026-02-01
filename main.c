@@ -18,6 +18,7 @@ int main(int argc, char *argv[]) {
     GtkWidget* entry2;
     GtkWidget* label1;
     GtkWidget* label2;
+    GtkWidget* labelCurrentWeek;
     GtkWidget* button1;
     GtkWidget* button2;
     GtkWidget* button3;
@@ -94,6 +95,7 @@ int main(int argc, char *argv[]) {
     label1 = gtk_label_new(week);
     entry1 = gtk_entry_new();
     label2 = gtk_label_new(weigth);
+    labelCurrentWeek = gtk_label_new("");
     entry2 = gtk_entry_new();
     button1 = gtk_button_new_with_label(save);
     button2 = gtk_button_new_with_label(resetZoom);
@@ -106,6 +108,7 @@ int main(int argc, char *argv[]) {
     g_drawing_area = drawing_area;
     g_entry1 = entry1;
     g_entry2 = entry2;
+    g_labelCurrentWeek = labelCurrentWeek;
     g_button_save = button1;
     g_summary = gtk_label_new("");
     g_progressPerWeek = gtk_label_new("");
@@ -162,6 +165,7 @@ int main(int argc, char *argv[]) {
     gtk_box_pack_start(GTK_BOX(vbox), buttonToWindow3, FALSE, FALSE, 5);
     gtk_box_pack_start(GTK_BOX(vbox), combo, FALSE, FALSE, 28);
     gtk_box_pack_start(GTK_BOX(vbox), label1, FALSE, FALSE, 5);
+    gtk_box_pack_start(GTK_BOX(vbox), labelCurrentWeek, FALSE, FALSE, 0);
     gtk_box_pack_start(GTK_BOX(vbox), entry1, FALSE, FALSE, 5);
     gtk_box_pack_start(GTK_BOX(vbox), label2, FALSE, FALSE, 5);
     gtk_box_pack_start(GTK_BOX(vbox), entry2, FALSE, FALSE, 5);

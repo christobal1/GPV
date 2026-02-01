@@ -23,6 +23,7 @@ extern GtkWidget* g_drawing_area;
 extern GtkWidget* g_entry1;
 extern GtkWidget* g_entry2;
 extern GtkWidget* g_summary;
+extern GtkWidget* g_labelCurrentWeek;
 extern GtkWidget* g_progressPerWeek;
 extern GtkWidget* g_button_save;
 
@@ -34,6 +35,7 @@ void switchToWindow1From3(GtkWidget* widget, gpointer data);
 GtkWidget* load_scaled_image(const char* filename, int width, int height);
 void save_data_to_file();
 void load_data_from_file();
+void updateCurrentWeekLabel();
 void calculateProgress(char* buffer, size_t size);
 void update_summary();
 void calculateWeeklyProgress(char* buffer, size_t size);

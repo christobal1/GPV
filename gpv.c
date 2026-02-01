@@ -11,12 +11,14 @@ int punkte_woche[MAX_PUNKTE];
 double punkte_gewicht[MAX_PUNKTE];
 int punkte_count = 0;
 
+int currentWeek;
 int woche = -1;
 double gewicht = -1;
 GtkWidget* g_drawing_area = NULL;
 GtkWidget* g_entry1 = NULL;
 GtkWidget* g_entry2 = NULL;
 GtkWidget* g_summary = NULL;
+GtkWidget* g_labelCurrentWeek = NULL;
 GtkWidget* g_progressPerWeek = NULL;
 GtkWidget* g_button_save = NULL;
 
@@ -91,6 +93,10 @@ void load_data_from_file(){
     }
     for(int i = 0; i < punkte_count; i++){
         fscanf(fp, "%d %lf", &punkte_woche[i], &punkte_gewicht[i]);
+
+        if(i+1 == punkte_count){
+            currentWeek = punkte_woche[i];
+        }
     }
     fclose(fp);
 }
@@ -156,6 +162,20 @@ void update_weekly_summary(){
     gtk_label_set_text(GTK_LABEL(g_progressPerWeek), buffer);
 }
 
+void updateCurrentWeekLabel(){
+
+    char buffer[50];
+    size_t size = sizeof(buffer);
+
+    if(strcmp(current_savefile, "Auswahl") == 0){
+        snprintf(buffer, size, "");
+    } else {
+        snprintf(buffer, size, "Aktuelle Woche: %d", currentWeek);
+        gtk_label_set_text(GTK_LABEL(g_labelCurrentWeek), buffer);
+    }
+}
+
+
 
 // Platzhalter Datei
 void set_placeholder_mode(int on){
@@ -174,6 +194,10 @@ void set_placeholder_mode(int on){
 
 // Callback-Funktion für Dropdown-Menü
 void on_combo_changed(GtkComboBoxText* combo, gpointer user_data){
+
+    currentWeek = 0;
+    updateCurrentWeekLabel();
+
     const char* filename = gtk_combo_box_text_get_active_text(combo);
 
     if(!filename){
@@ -190,11 +214,15 @@ void on_combo_changed(GtkComboBoxText* combo, gpointer user_data){
         set_placeholder_mode(0); //Eingaben frei
         update_summary();
         update_weekly_summary();
+        updateCurrentWeekLabel();
     }
+    updateCurrentWeekLabel();
 }
 
 // Callback-Funktion, wenn der Speichern-Button gedrückt wird
 void on_button_clicked(GtkWidget* widget, gpointer data) {
+    updateCurrentWeekLabel();
+
     const char* woche_text = gtk_entry_get_text(GTK_ENTRY(g_entry1));
     const char* gewicht_text = gtk_entry_get_text(GTK_ENTRY(g_entry2));
 
@@ -220,15 +248,16 @@ void on_button_clicked(GtkWidget* widget, gpointer data) {
 
     if(index >= 0){
         punkte_gewicht[index] = neues_gewicht;
-        g_print("Aktualisiert: Woche %d, Gewicht %f\n", neue_woche, neues_gewicht);
+        g_print("Aktualisiert: (%s) Woche %d, Gewicht %f\n", current_savefile, neue_woche, neues_gewicht);
     } else {
         if (punkte_count < MAX_PUNKTE){
             punkte_woche[punkte_count] = neue_woche;
             punkte_gewicht[punkte_count] = neues_gewicht;
             punkte_count++;
-            g_print("Gespeichert: Woche %d, Gewicht %f\n", neue_woche, neues_gewicht);
+            g_print("Gespeichert: (%s) Woche %d, Gewicht %f\n", current_savefile, neue_woche, neues_gewicht);
         }
     }
+    
     
 
     save_data_to_file();
@@ -241,6 +270,7 @@ void on_button_clicked(GtkWidget* widget, gpointer data) {
 
     update_summary();
     update_weekly_summary();
+    updateCurrentWeekLabel();
 }
 
 // Callback-Funktion, wenn der "Zoom zurücksetzen" Button gedrückt wird
