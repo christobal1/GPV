@@ -164,8 +164,8 @@ int main(int argc, char *argv[]) {
     gtk_box_pack_start(GTK_BOX(vbox), buttonToWindow2, FALSE, FALSE, 5);
     gtk_box_pack_start(GTK_BOX(vbox), buttonToWindow3, FALSE, FALSE, 5);
     gtk_box_pack_start(GTK_BOX(vbox), combo, FALSE, FALSE, 28);
-    gtk_box_pack_start(GTK_BOX(vbox), label1, FALSE, FALSE, 5);
     gtk_box_pack_start(GTK_BOX(vbox), labelCurrentWeek, FALSE, FALSE, 0);
+    gtk_box_pack_start(GTK_BOX(vbox), label1, FALSE, FALSE, 5);
     gtk_box_pack_start(GTK_BOX(vbox), entry1, FALSE, FALSE, 5);
     gtk_box_pack_start(GTK_BOX(vbox), label2, FALSE, FALSE, 5);
     gtk_box_pack_start(GTK_BOX(vbox), entry2, FALSE, FALSE, 5);
