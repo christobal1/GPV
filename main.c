@@ -7,6 +7,7 @@
 //GtkWidget* window2 = NULL;
 
 int main(int argc, char *argv[]) {
+
     setlocale(LC_NUMERIC, "C");  // Dezimaltrennzeichen = Punkt
     const char* programmName = "GPV (Gym Progress Visualizer) 1.2.1";
 
@@ -49,6 +50,7 @@ int main(int argc, char *argv[]) {
 
     // Fenster 1 erstellen
     window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    gtk_window_set_icon_from_file(GTK_WINDOW(window), "icon.png", NULL);
     gtk_window_set_title(GTK_WINDOW(window), programmName);
     gtk_window_set_default_size(GTK_WINDOW(window), windowX, windowY);
 

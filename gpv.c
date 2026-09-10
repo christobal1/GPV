@@ -6,6 +6,11 @@
 #include <cairo.h>
 #include <math.h>
 
+int maxKgAxis = 300;
+int maxWeeksAxis = 100;
+
+
+
 char current_savefile[256] = "saves/dummy_save.txt";
 int punkte_woche[MAX_PUNKTE];
 double punkte_gewicht[MAX_PUNKTE];
@@ -27,6 +32,7 @@ const char* PLACEHOLDER_FILE = "saves/Auswahl";
 GtkWidget* window = NULL;
 GtkWidget* window2 = NULL;
 GtkWidget* window3 = NULL;
+
 
 // Zoom Variablen
 static double zoomFactor = 1.0;
@@ -349,8 +355,8 @@ gboolean on_draw(GtkWidget* widget, cairo_t* cr, gpointer data){
     cairo_set_font_size(cr, 12);
 
     // Y-Achse
-    for(int v = 0; v <= 300; v += 10){
-        int y = y0 - (v * (y0 - y_min) / 300);
+    for(int v = 0; v <= maxKgAxis; v += 10){
+        int y = y0 - (v * (y0 - y_min) / maxKgAxis);
         char label[16];
         snprintf(label, sizeof(label), "%d", v);
         cairo_move_to(cr, x0 - 30, y + 5);
@@ -362,12 +368,14 @@ gboolean on_draw(GtkWidget* widget, cairo_t* cr, gpointer data){
     }
 
     // X-Achse
-    for(int v = 0; v <= 50; v += 1){
-        int x = x0 + (v * (x_max - x0) / 50);
+    for(int v = 0; v <= maxWeeksAxis; v += 1){
+        int x = x0 + (v * (x_max - x0) / maxWeeksAxis);
         char label[16];
-        snprintf(label, sizeof(label), "%d", v);
-        cairo_move_to(cr, x - 10, y0 + 20);
-        cairo_show_text(cr, label);
+        if(v%5 == 0){
+            snprintf(label, sizeof(label), "%d", v);
+            cairo_move_to(cr, x - 10, y0 + 20);
+            cairo_show_text(cr, label);
+        }
 
         // Achsen-Striche
         cairo_move_to(cr, x, y0 - 5);

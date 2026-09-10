@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+HERE="$(cd "$(dirname "$0")" && pwd)"
+cd "$HERE/../Resources"
+exec "$HERE/../Resources/GPV.bin" "$@"
