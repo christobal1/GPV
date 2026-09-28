@@ -170,7 +170,7 @@ void update_weekly_summary(){
 
 void updateCurrentWeekLabel(){
 
-    char buffer[50];
+    char buffer[maxWeeksAxis];
     size_t size = sizeof(buffer);
 
     if(strcmp(current_savefile, "Auswahl") == 0){
@@ -388,8 +388,8 @@ gboolean on_draw(GtkWidget* widget, cairo_t* cr, gpointer data){
 
     // Punkte zeichnen und mit Linien verbinden
     if(punkte_count > 0){
-        int x = x0 + (punkte_woche[0] * (x_max - x0) / 50);
-        int y = y0 - (punkte_gewicht[0] * (y0 - y_min) / 300);
+        int x = x0 + (punkte_woche[0] * (x_max - x0) / maxWeeksAxis);
+        int y = y0 - (punkte_gewicht[0] * (y0 - y_min) / maxKgAxis);
         cairo_set_source_rgb(cr, 1, 1, 1);
         cairo_arc(cr, x, y, 4, 0, 2 * G_PI);
         cairo_fill(cr);
@@ -405,10 +405,10 @@ gboolean on_draw(GtkWidget* widget, cairo_t* cr, gpointer data){
                     cairo_set_source_rgb(cr, 0.9, 0.9, 0.0); //orange
                 }
 
-                int x1 = x0 + (punkte_woche[i-1] * (x_max - x0) / 50);
-                int y1 = y0 - (punkte_gewicht[i-1] * (y0 - y_min) / 300);
-                int x2 = x0 + (punkte_woche[i] * (x_max - x0) / 50);
-                int y2 = y0 - (punkte_gewicht[i] * (y0 - y_min) / 300);
+                int x1 = x0 + (punkte_woche[i-1] * (x_max - x0) / maxWeeksAxis);
+                int y1 = y0 - (punkte_gewicht[i-1] * (y0 - y_min) / maxKgAxis);
+                int x2 = x0 + (punkte_woche[i] * (x_max - x0) / maxWeeksAxis);
+                int y2 = y0 - (punkte_gewicht[i] * (y0 - y_min) / maxKgAxis);
                 cairo_move_to(cr, x1, y1);
                 cairo_line_to(cr, x2, y2);
                 cairo_stroke(cr);
@@ -425,8 +425,8 @@ gboolean on_draw(GtkWidget* widget, cairo_t* cr, gpointer data){
         
         int last_index = punkte_count - 1;
 
-        int x_last = x0 + (punkte_woche[last_index] * (x_max - x0) / 50);
-        int y_last = y0 - (punkte_gewicht[last_index] * (y0 - y_min) / 300);
+        int x_last = x0 + (punkte_woche[last_index] * (x_max - x0) / maxWeeksAxis);
+        int y_last = y0 - (punkte_gewicht[last_index] * (y0 - y_min) / maxKgAxis);
 
         //Steigung berechnen
         double weight_difference = punkte_gewicht[last_index] - punkte_gewicht[0];
@@ -449,8 +449,8 @@ gboolean on_draw(GtkWidget* widget, cairo_t* cr, gpointer data){
             int w_future = punkte_woche[last_index] + i;
             double gewicht_future = punkte_gewicht[last_index] + m * i;
 
-            int x_future = x0 + (w_future * (x_max - x0) / 50);
-            int y_future = y0 - (gewicht_future * (y0 - y_min) / 300);
+            int x_future = x0 + (w_future * (x_max - x0) / maxWeeksAxis);
+            int y_future = y0 - (gewicht_future * (y0 - y_min) / maxKgAxis);
 
             cairo_move_to(cr, prev_x, prev_y);
             cairo_line_to(cr, x_future, y_future);
